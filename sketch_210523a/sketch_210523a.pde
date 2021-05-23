@@ -44,7 +44,11 @@ void draw() {
     fill(255);
     noStroke();
     if(640+(starting[i]-beat)*barw<1280)ungone[i]=false;
-    if(!gone[i] && !ungone[i])rect(640+(starting[i]-beat)*barw,720-barh*notes[i],duration[i]*barw,barh);
+    if(!gone[i] && !ungone[i]){
+      if((starting[i]-beat)*barw<0 && (starting[i]-beat)*barw+duration[i]*barw>0)fill(255,0,0);
+      else fill(255);
+      rect(640+(starting[i]-beat)*barw,720-barh*notes[i],duration[i]*barw,barh);
+    }
     if(640+(starting[i]-beat+duration[i])*barw<0)gone[i]=true;
   }
   framecnt+=1;
